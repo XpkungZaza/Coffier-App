@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F5EBD7] text-[#2C1810] font-sans antialiased min-h-screen;
+    background-image: 
+      radial-gradient(#C19A6B15 1px, transparent 1px),
+      radial-gradient(#6F4E3710 1px, #F5EBD7 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+}
+
+/* Custom Glassmorphism & Soft Coffee Cards */
+.coffee-card {
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(193, 154, 107, 0.2);
+  box-shadow: 0 10px 30px rgba(111, 78, 55, 0.06);
+}
+
+.coffee-card-dark {
+  background: rgba(44, 24, 16, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(193, 154, 107, 0.3);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5EBD7;
+}
+::-webkit-scrollbar-thumb {
+  background: #C19A6B;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6F4E37;
+}
+
+/* Steam animation for hot coffee */
+@keyframes steam {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  30% { opacity: 0.6; }
+  100% { transform: translateY(-24px) scaleX(1.4); opacity: 0; }
+}
+
+.animate-steam {
+  animation: steam 2.5s infinite ease-out;
+}
+
+/* Pulse glow effect for ready orders */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(45, 106, 79, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(45, 106, 79, 0.8); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s infinite ease-in-out;
+}
