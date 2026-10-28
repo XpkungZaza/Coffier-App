@@ -110,6 +110,30 @@ npm run dev
 
 ---
 
+## ☁️ 5. วิธีการ Deploy ขึ้น Vercel (Vercel Deployment)
+
+โปรเจกต์นี้ได้รับการคอนฟิกไฟล์ `vercel.json` และระบบ SPA Routing Rewrite ไว้เรียบร้อยแล้ว รองรับการ Deploy ได้ 2 รูปแบบ:
+
+### รูปแบบที่ 1: Deploy ผ่าน Vercel Dashboard (แนะนำ - ง่ายที่สุด)
+1. เข้าไปที่ [Vercel Dashboard](https://vercel.com/new) แล้วกด **"Add New Project"**
+2. เลือก Import repository `XpkungZaza/Coffier-App`
+3. Vercel จะตรวจพบ `vercel.json` อัตโนมัติ:
+   - **Framework Preset**: Vite
+   - **Build Command**: `cd client && npm install && npm run build` (หรือปล่อยตามที่ Vercel ตรวจพบ)
+   - **Output Directory**: `client/dist`
+4. กด **Deploy** ได้ทันที!
+5. เมื่อ Deploy เสร็จสิ้น สามารถเข้าชมเว็บแอปพลิเคชันได้ทันที โดยระบบมี **Demo Fallback Mode** ทำให้ทดสอบเลือกร้าน, ปรับแต่งสูตรกาแฟ, ใส่ตะกร้า, ชำระเงิน PromptPay QR, และใช้งาน Dashboard เจ้าของร้านได้ครบทุกฟีเจอร์
+
+### รูปแบบที่ 2: Deploy โฟลเดอร์ `client` โดยตรง
+หากตั้งค่า **Root Directory** ใน Vercel Settings ให้ชี้ไปที่โฟลเดอร์ `client`:
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- ตัวไฟล์ [client/vercel.json](file:///client/vercel.json) จะดูแลการ Rewrite หน้า SPA ป้องกัน Error 404 ให้โดยอัตโนมัติ
+
+*(ทางเลือกเพิ่มเติม: หากต้องการเชื่อมต่อ Backend จริง สามารถนำโฟลเดอร์ `server/` ไปโฮสต์บน Render / Railway แล้วนำ URL มาใส่ใน Environment Variable `VITE_API_URL` บน Vercel ได้)*
+
+---
+
 ## 🔑 5. บัญชีผู้ใช้ทดสอบ (Demo Accounts)
 
 ระบบมีปุ่ม **"Quick Demo Login" (คลิกเดียวเข้าสู่ระบบทันที)** ที่หน้า Login หรือกรอกข้อมูลดังนี้:
